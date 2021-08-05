@@ -37,6 +37,8 @@ function randomizza() {
 
 }
 
+// ------------------------------------------ BOUBLE SORT ------------------------------------------
+
 async function boubleSort() {
 
     let n = parseInt(quantitaBarre.value);
@@ -60,6 +62,8 @@ async function boubleSort() {
     finito();
 
 }
+
+// ------------------------------------------ SELECTION SORT ------------------------------------------
 
 async function selectionSort() {
 
@@ -90,6 +94,8 @@ async function selectionSort() {
     finito();
 
 }
+
+// ------------------------------------------ INSERTION SORT ------------------------------------------
 
 async function insertionSort() {
 
@@ -123,6 +129,8 @@ async function insertionSort() {
 
 }
 
+// ------------------------------------------ MERGE SORT ------------------------------------------
+
 // https://stackoverflow.com/questions/55288158/javascript-merge-sort-visualisation
 async function mergeSort(arr) {
 
@@ -146,14 +154,14 @@ async function mergeSort(arr) {
     }
 
     for (const iterazione of arrays) {
-        
+
         console.log(iterazione);
         let i = 0;
 
         for (const elemento of iterazione) {
             document.getElementById(i++).style.height = elemento.toString() + "px";
         }
-        
+
         await sleep(velocita.value);
 
     }
@@ -163,14 +171,16 @@ async function mergeSort(arr) {
 
 }
 
+// ------------------------------------------ QUICK SORT ------------------------------------------
+
 // https://www.geeksforgeeks.org/quick-sorthoares-partition-visualization-using-javascript/
-async function hoare_partition(l, r) {
-    
+async function hoarePartition(l, r) {
+
     var pivot = array[l];
-  
+
     var i = l - 1;
     var j = r + 1;
-  
+
     while (true) {
 
         // Find leftmost element greater than
@@ -178,37 +188,37 @@ async function hoare_partition(l, r) {
         do {
 
             i++;
-            if (i - 1 >= l) 
+            if (i - 1 >= l)
                 document.getElementById(i - 1).style.backgroundColor = "yellow";
             document.getElementById(i).style.backgroundColor = "red";
 
             await sleep(velocita.value);
 
         } while (array[i] < pivot);
-  
+
         // Find rightmost element smaller than
         // or equal to pivot
         do {
 
             j--;
-            if (j + 1 <= r) 
+            if (j + 1 <= r)
                 document.getElementById(j + 1).style.backgroundColor = "orange";
             document.getElementById(j).style.backgroundColor = "red";
 
             await sleep(velocita.value);
 
         } while (array[j] > pivot);
-  
+
         // If two pointers met.
         if (i >= j) {
 
-            for (var k = 0; k < array.length; k++) 
+            for (var k = 0; k < array.length; k++)
                 document.getElementById(k).style.backgroundColor = "blue";
-        
+
             return j;
 
         }
-  
+
         //swapping ith and jth element   
         swap(i, j);
 
@@ -216,7 +226,7 @@ async function hoare_partition(l, r) {
 
     }
 }
-  
+
 // Asynchronous QuickSort function
 async function quickSort(l, r) {
 
@@ -224,7 +234,7 @@ async function quickSort(l, r) {
     if (l < r) {
 
         //Storing the index of pivot element after partition
-        let pivot_idx = await hoare_partition(l, r);
+        let pivot_idx = await hoarePartition(l, r);
         //Recursively calling quicksort for left partition
         await quickSort(l, pivot_idx);
         //Recursively calling quicksort for right partition
@@ -241,8 +251,63 @@ async function faiQuickSort() {
 
 }
 
-// heap sort
+// ------------------------------------------ HEAP SORT ------------------------------------------
+
+// https://www.geeksforgeeks.org/heap-sort-visualization-using-javascript/
+async function heapify(n, i) {
+
+    var largest = i; // Initialize largest as root
+    var l = 2 * i + 1; // left = 2*i + 1
+    var r = 2 * i + 2; // right = 2*i + 2
+
+    // If left child is larger than root
+    if (l < n && array[l] > array[largest])
+        largest = l;
+
+    // If right child is larger than largest so far
+    if (r < n && array[r] > array[largest])
+        largest = r;
+
+    // If largest is not root
+    if (largest != i) {
+
+        swap(i, largest);
+
+        await sleep(velocita.value);
+
+        // Recursively Hapify the affected sub-tree
+        await heapify(n, largest);
+
+    }
+
+}
+
+async function heapSort(n) {
+
+    // Build heap (rearrange array)
+    for (let i = Math.floor(n / 2) - 1; i >= 0; i--)
+        await heapify(n, i);
+
+    // One by one extract an element from heap
+    for (let i = n - 1; i > 0; i--) {
+
+        // Move current root to end
+        swap(i, 0);
+
+        await sleep(velocita.value);
+
+        // Call max Heapify on the reduced heap
+        await heapify(i, 0);
+
+    }
+
+    finito();
+
+}
+
 // radix sort
+
+// ------------------------------------------ FUNZIONI AUSILIARIE ------------------------------------------
 
 function swap(xp, yp) {
 
