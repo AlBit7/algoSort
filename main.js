@@ -31,7 +31,7 @@ function randomizza() {
         let altezza = Math.floor(Math.random() * (MAX - 1) + 1);
 
         array.push(altezza);
-        corpo.innerHTML += `<div id="${i}" class="barra" style="width: ${larghezza - 2}px; height: ${altezza}px;"></div>`;
+        corpo.innerHTML += `<div id="${i}" class="barra" style="width: ${larghezza}px; height: ${altezza}px;"></div>`;
 
     }
 
@@ -213,7 +213,7 @@ async function hoarePartition(l, r) {
         if (i >= j) {
 
             for (var k = 0; k < array.length; k++)
-                document.getElementById(k).style.backgroundColor = "blue";
+                document.getElementById(k).style.backgroundColor = "";
 
             return j;
 
@@ -256,9 +256,9 @@ async function faiQuickSort() {
 // https://www.geeksforgeeks.org/heap-sort-visualization-using-javascript/
 async function heapify(n, i) {
 
-    var largest = i; // Initialize largest as root
-    var l = 2 * i + 1; // left = 2*i + 1
-    var r = 2 * i + 2; // right = 2*i + 2
+    let largest = i; // Initialize largest as root
+    let l = 2 * i + 1; // left = 2*i + 1
+    let r = 2 * i + 2; // right = 2*i + 2
 
     // If left child is larger than root
     if (l < n && array[l] > array[largest])
@@ -273,7 +273,10 @@ async function heapify(n, i) {
 
         swap(i, largest);
 
+        document.getElementById(i).style.backgroundColor = "blue"
+        document.getElementById(largest).style.backgroundColor = "red";
         await sleep(velocita.value);
+        document.getElementById(i).style.backgroundColor = document.getElementById(largest).style.backgroundColor = "";
 
         // Recursively Hapify the affected sub-tree
         await heapify(n, largest);
@@ -298,6 +301,190 @@ async function heapSort(n) {
 
         // Call max Heapify on the reduced heap
         await heapify(i, 0);
+
+    }
+
+    finito();
+
+}
+
+// ------------------------------------------ COCKTAIL SORT ------------------------------------------
+
+// https://algostructure.com/sorting/cocktailsort.php
+async function cocktailSort() {
+
+    let n = 0;
+    let m = array.length - 1;
+
+    while (n <= m) {
+
+        for (let i = n; i < m; i++) {
+
+            document.getElementById(i).style.backgroundColor = "red";
+
+            if (array[i] > array[i + 1])
+                swap(i, i + 1);
+
+            await sleep(velocita.value);
+            document.getElementById(i).style.backgroundColor = "";
+        }
+        m--;
+
+        for (let j = m; j > n; j--) {
+
+            document.getElementById(j).style.backgroundColor = "red";
+
+            if (array[j] < array[j - 1])
+                swap(j, j - 1);
+
+            await sleep(velocita.value);
+            document.getElementById(j).style.backgroundColor = "";
+        }
+        n++;
+
+    }
+
+    finito();
+
+}
+
+// ------------------------------------------ COMB SORT ------------------------------------------
+
+async function combSort() {
+
+    let gap = array.length;
+    let shrink = 1.3;
+    let swapped = false;
+    let i;
+
+    while (gap != 1 || swapped) {
+
+        gap = parseInt(gap / shrink);
+
+        if (gap < 1)
+            gap = 1;
+
+        i = 0;
+        swapped = false;
+
+        while (i + gap < array.length) {
+
+            document.getElementById(i + gap).style.backgroundColor = document.getElementById(i).style.backgroundColor = "red";
+            await sleep(velocita.value);
+
+            if (array[i] > array[i + gap]) {
+                swap(i, i + gap);
+                swapped = true;
+            }
+
+            document.getElementById(i + gap).style.backgroundColor = document.getElementById(i).style.backgroundColor = "";
+            i++;
+
+        }
+    }
+
+    finito();
+
+}
+
+// ------------------------------------------ SHELL SORT ------------------------------------------
+
+async function shellSort() {
+
+    let gaps = [701, 301, 132, 57, 23, 10, 4, 1];
+    let tmp;
+    let i, j;
+
+    for (let gap of gaps) {
+        for (i = gap; i < array.length; i++) {
+
+            tmp = array[i];
+
+            for (j = i; j >= gap && array[j - gap] > tmp; j -= gap) {
+
+                array[j] = array[j - gap];
+                document.getElementById(j).style.height = array[j - gap].toString() + "px";
+
+                document.getElementById(j).style.backgroundColor = "red";
+                await sleep(velocita.value);
+                document.getElementById(j).style.backgroundColor = "";
+
+            }
+
+            array[j] = document.getElementById(j).style.height = tmp;
+            document.getElementById(j).style.height = tmp.toString() + "px";
+
+        }
+    }
+
+    finito();
+
+}
+
+// ------------------------------------------ STOOGE SORT ------------------------------------------
+
+async function stoogeSort(i, j) {
+
+    document.getElementById(i).style.backgroundColor = document.getElementById(j).style.backgroundColor = "red";
+    await sleep(velocita.value);
+    document.getElementById(i).style.backgroundColor = document.getElementById(j).style.backgroundColor = "";
+
+    let t;
+
+    if (array[j] < array[i])
+        swap(i, j);
+
+    if ((j - i + 1) >= 3) {
+
+        t = parseInt((j - i + 1) / 3);
+        await stoogeSort(i, j - t);
+        await stoogeSort(i + t, j);
+        await stoogeSort(i, j - t);
+
+    }
+
+}
+
+async function faiStoogeSort() {
+
+    await stoogeSort(0, array.length - 1);
+    finito();
+
+}
+
+// ------------------------------------------ ODD EVEN SORT ------------------------------------------
+
+async function oddevenSort() {
+
+    let sorted = false;
+
+    while (!sorted) {
+
+        sorted = true;
+
+        for (let i = 1; i < array.length - 1; i += 2) {
+
+            document.getElementById(i).style.backgroundColor = "red";
+            await sleep(velocita.value);            
+            document.getElementById(i).style.backgroundColor = "";
+
+            if (array[i] > array[i + 1]) {
+                swap(i, i + 1);
+                sorted = false;
+            }
+        }
+
+        for (let i = 0; i < array.length - 1; i += 2) {
+
+            document.getElementById(i).style.backgroundColor = "red";
+            await sleep(velocita.value);            
+            document.getElementById(i).style.backgroundColor = "";
+
+            if (array[i] > array[i + 1]) {
+                swap(i, i + 1);
+                sorted = false;
+            }
+        }
 
     }
 
