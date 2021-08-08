@@ -580,15 +580,24 @@ function sleep(ms) {
 async function finito() {
 
     let barre = document.getElementsByClassName("barra");
-    let n = (barre.length % 2 == 0) ? barre.length : barre.length + 1;
-    let j = n;
+    let n, j;
+    if (barre.length % 2 == 0) 
+        n = j = barre.length;
+    else {
+        n = barre.length + 1;
+        j = barre.length;
+    } 
 
     for (let i = 0; i < n / 2; ++i) {
+
         barre[i].style.backgroundColor = "red";
         barre[--j].style.backgroundColor = "red";
+
         await sleep(10);
+
         barre[i].style.backgroundColor = "green";
         barre[j].style.backgroundColor = "green";
+
     }
 
 }
