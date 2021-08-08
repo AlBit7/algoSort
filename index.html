@@ -1,35 +1,104 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+
     <title>Sorting algo</title>
 
     <link rel="stylesheet" href="style.css">
 
 </head>
-<body>
+
+<body id="main">
 
     <div class="header">
-    
-        <input type="number" name="quantitaBarre" id="quantitaBarre" placeholder="elementi">
+
+        <div class="unificatore">
+        
+            <div id="menu" class="menu" onclick="openNav()">
+                <svg width="24" height="24" viewBox="0 0 24 24" focusable="false">
+                    <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"></path>
+                </svg>
+            </div>
+
+            <span id="tipoSort" class="tipoSort" style="margin-left: 10px;"></span>
+        
+        </div>
+
+        <div id="mySidenav" class="sidenav">
+
+            <div class="closebtn" onclick="closeNav()">×</div>
+
+            <div onclick="sort=1;scrittaTipoSort.innerHTML = 'bouble sort';" class="elemento" style="margin-top: 50px;">
+                <span>
+                    bouble sort
+                </span>
+            </div>
+            <div onclick="sort=2;scrittaTipoSort.innerHTML = 'selection sort';" class="elemento">
+                <span>
+                    selection sort
+                </span>
+            </div>
+            <div onclick="sort=3;scrittaTipoSort.innerHTML = 'insertion sort';" class="elemento">
+                <span>
+                    insertion sort
+                </span>
+            </div>
+            <div onclick="sort=4;scrittaTipoSort.innerHTML = 'quick sort';" class="elemento">
+                <span>
+                    quick sort
+                </span>
+            </div>
+            <div onclick="sort=5;scrittaTipoSort.innerHTML = 'merge sort';" class="elemento">
+                <span>
+                    merge sort
+                </span>
+            </div>
+            <div onclick="sort=6;scrittaTipoSort.innerHTML = 'heap sort';" class="elemento">
+                <span>
+                    heap sort
+                </span>
+            </div>
+
+            <div onclick="sort=7;scrittaTipoSort.innerHTML = 'cocktail sort';" class="elemento">
+                <span>
+                    cocktail sort
+                </span>
+            </div>
+            <div onclick="sort=8;scrittaTipoSort.innerHTML = 'comb sort';" class="elemento">
+                <span>
+                    comb sort
+                </span>
+            </div>
+            <div onclick="sort=9;scrittaTipoSort.innerHTML = 'shell sort';" class="elemento">
+                <span>
+                    shell sort
+                </span>
+            </div>
+            <div onclick="sort=10;scrittaTipoSort.innerHTML = 'stooge sort';" class="elemento">
+                <span>
+                    stooge sort
+                </span>
+            </div>
+            <div onclick="sort=11;scrittaTipoSort.innerHTML = 'odd even sort';" onclick class="elemento">
+                <span>
+                    odd even sort
+                </span>
+            </div>
+
+        </div>
+
+        <input type="number" name="quantitaBarre" id="quantitaBarre" placeholder="elementi" value="100">
         <input type="range" min="0" max="500" value="250" class="slider" id="velocita">
         <input type="button" value="randomizza" onclick="randomizza();">
-        <input type="button" value="bouble sort" onclick="boubleSort();">
-        <input type="button" value="selection sort" onclick="selectionSort();">
-        <input type="button" value="cocktail sort" onclick="cocktailSort();">
-        <input type="button" value="comb sort" onclick="combSort();">
-        <input type="button" value="shell sort" onclick="shellSort();">
-        <input type="button" value="stooge sort" onclick="faiStoogeSort();">
-        <input type="button" value="odd even sort" onclick="oddevenSort();">
-        <input type="button" value="insertion sort" onclick="insertionSort();">
-        <input type="button" value="merge sort" onclick="mergeSort(array);">
-        <input type="button" value="quick sort" onclick="faiQuickSort();">
-        <input type="button" value="heap sort" onclick="heapSort(array.length);">
+        <input type="button" value="riordina" onclick="riordina();">
 
     </div>
+
+
 
     <div id="corpo" class="corpo">
 
@@ -38,6 +107,7 @@
     </div>
 
     <script src="main.js"></script>
-    
+
 </body>
+
 </html>
