@@ -4,8 +4,11 @@ const MAX = innerHeight - 50;
 const quantitaBarre = document.getElementById("quantitaBarre");
 const corpo = document.getElementById("corpo");
 const velocita = document.getElementById("velocita");
+const scrittaTipoSort = document.getElementById("tipoSort");
 
 var array;
+var sort;
+randomizza();
 
 function prendiLarghezzaBarre(numeroBarre) {
 
@@ -33,6 +36,61 @@ function randomizza() {
         array.push(altezza);
         corpo.innerHTML += `<div id="${i}" class="barra" style="width: ${larghezza}px; height: ${altezza}px;"></div>`;
 
+    }
+
+}
+
+function riordina() {
+
+    switch (sort) {
+
+        case 1:
+            boubleSort();
+            break;
+
+        case 2:
+            selectionSort();
+            break;
+
+        case 3:
+            insertionSort();
+            break;
+
+        case 4:
+            faiQuickSort();
+            break;
+
+        case 5:
+            mergeSort(array);
+            break;
+
+        case 6:
+            heapSort(array.length);
+            break;
+
+        case 7:
+            cocktailSort();
+            break;
+
+        case 8:
+            combSort();
+            break;
+
+        case 9:
+            shellSort();
+            break;
+
+        case 10:
+            faiStoogeSort();
+            break;
+
+        case 11:
+            oddevenSort();
+            break;
+
+        default:
+            scrittaTipoSort.innerHTML = 'nessun sort';
+            break;
     }
 
 }
@@ -134,13 +192,13 @@ async function insertionSort() {
 // https://stackoverflow.com/questions/55288158/javascript-merge-sort-visualisation
 async function mergeSort(arr) {
 
-    var arrays = [arr.slice()],
+    let arrays = [arr.slice()],
         n = arr.length,
         array0 = arr,
         array1 = new Array(n);
 
-    for (var m = 1; m < n; m <<= 1) {
-        for (var i = 0; i < n; i += (m << 1)) {
+    for (let m = 1; m < n; m <<= 1) {
+        for (let i = 0; i < n; i += (m << 1)) {
             merge(i, Math.min(i + m, n), Math.min(i + (m << 1), n));
         }
         arrays.push(array1.slice());
@@ -148,25 +206,29 @@ async function mergeSort(arr) {
     }
 
     function merge(left, right, end) {
-        for (var i0 = left, i1 = right, j = left; j < end; ++j) {
+        for (let i0 = left, i1 = right, j = left; j < end; ++j) {
             array1[j] = array0[i0 < right && (i1 >= end || array0[i0] <= array0[i1]) ? i0++ : i1++];
         }
     }
 
     for (const iterazione of arrays) {
 
-        console.log(iterazione);
         let i = 0;
 
         for (const elemento of iterazione) {
-            document.getElementById(i++).style.height = elemento.toString() + "px";
-        }
 
-        await sleep(velocita.value);
+            document.getElementById(i).style.height = elemento.toString() + "px";
+            document.getElementById(i).style.backgroundColor = "red";
+
+            await sleep(velocita.value);
+
+            document.getElementById(i++).style.backgroundColor = "";
+        }
 
     }
 
     array = arrays[-1];
+
     finito();
 
 }
@@ -247,6 +309,7 @@ async function quickSort(l, r) {
 async function faiQuickSort() {
 
     await quickSort(0, array.length - 1);
+
     finito();
 
 }
@@ -275,7 +338,9 @@ async function heapify(n, i) {
 
         document.getElementById(i).style.backgroundColor = "blue"
         document.getElementById(largest).style.backgroundColor = "red";
+
         await sleep(velocita.value);
+
         document.getElementById(i).style.backgroundColor = document.getElementById(largest).style.backgroundColor = "";
 
         // Recursively Hapify the affected sub-tree
@@ -465,7 +530,7 @@ async function oddevenSort() {
         for (let i = 1; i < array.length - 1; i += 2) {
 
             document.getElementById(i).style.backgroundColor = "red";
-            await sleep(velocita.value);            
+            await sleep(velocita.value);
             document.getElementById(i).style.backgroundColor = "";
 
             if (array[i] > array[i + 1]) {
@@ -477,7 +542,7 @@ async function oddevenSort() {
         for (let i = 0; i < array.length - 1; i += 2) {
 
             document.getElementById(i).style.backgroundColor = "red";
-            await sleep(velocita.value);            
+            await sleep(velocita.value);
             document.getElementById(i).style.backgroundColor = "";
 
             if (array[i] > array[i + 1]) {
@@ -512,12 +577,30 @@ function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
 
-function finito() {
+async function finito() {
 
     let barre = document.getElementsByClassName("barra");
+    let n = (barre.length % 2 == 0) ? barre.length : barre.length + 1;
+    let j = n;
 
-    for (let i = 0; i < barre.length; ++i) {
+    for (let i = 0; i < n / 2; ++i) {
+        barre[i].style.backgroundColor = "red";
+        barre[--j].style.backgroundColor = "red";
+        await sleep(10);
         barre[i].style.backgroundColor = "green";
+        barre[j].style.backgroundColor = "green";
     }
 
+}
+
+function openNav() {
+    document.getElementById("mySidenav").style.width = "200px";
+    document.getElementById("main").style.marginLeft = "200px";
+    document.getElementById("menu").style = "visibility: hidden;";
+}
+
+function closeNav() {
+    document.getElementById("mySidenav").style.width = "0";
+    document.getElementById("main").style.marginLeft = "0";
+    document.getElementById("menu").style = "visibility: visible;";
 }
