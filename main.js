@@ -45,7 +45,7 @@ function riordina() {
     let bottone = document.getElementById("riordina");
 
     bottone.style.backgroundColor = getComputedStyle(document.documentElement).getPropertyValue('--color-ocean');
-    bottone.innerHTML = "---";
+    bottone.innerHTML = "<div class='loader --7'></div>";
     //bottone.onclick = console.log("aspetta che finisca!!");
     
     switch (sort) {
