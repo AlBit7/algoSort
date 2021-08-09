@@ -14,10 +14,10 @@
 
 <body id="main">
 
-    <div class="header">
+    <div class="header" id="header">
 
         <div class="unificatore">
-        
+
             <div id="menu" class="menu" onclick="openNav()">
                 <svg width="24" height="24" viewBox="0 0 24 24" focusable="false">
                     <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"></path>
@@ -25,7 +25,7 @@
             </div>
 
             <span id="tipoSort" class="tipoSort" style="margin-left: 10px;"></span>
-        
+
         </div>
 
         <div id="mySidenav" class="sidenav">
@@ -91,10 +91,17 @@
 
         </div>
 
-        <input type="number" name="quantitaBarre" id="quantitaBarre" placeholder="elementi" value="100">
-        <input type="range" min="0" max="500" value="250" class="slider" id="velocita">
-        <input type="button" value="randomizza" onclick="randomizza();">
-        <input type="button" value="riordina" onclick="riordina();">
+        <div class="unificatore">
+
+            <div class="unificatore" style="margin-right: 15px;">
+                <div class='button -blue' onclick="randomizza();" style="padding-left: 20px;margin-right: 15px;">Randomizza</div>
+                <div class='button -blue' onclick="riordina();">Riordina</div>
+            </div>
+
+            <input type="number" name="quantitaBarre" id="quantitaBarre" placeholder="elementi" value="100" style="margin-right: 15px;">
+            <input type="range" min="0" max="500" value="250" class="slider" id="velocita">
+
+        </div>
 
     </div>
 
