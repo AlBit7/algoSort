@@ -1,5 +1,5 @@
-const LARGHEZZA_MASSIMA = 20;
-const MAX = innerHeight - 50;
+const LARGHEZZA_MASSIMA = 15;
+const MAX = innerHeight - 100;
 
 const quantitaBarre = document.getElementById("quantitaBarre");
 const corpo = document.getElementById("corpo");
@@ -12,7 +12,7 @@ randomizza();
 
 function prendiLarghezzaBarre(numeroBarre) {
 
-    let larghezzaBarre = innerWidth * 0.9 / numeroBarre;
+    let larghezzaBarre = innerWidth * 0.95 / numeroBarre;
 
     if (larghezzaBarre > LARGHEZZA_MASSIMA)
         larghezzaBarre = LARGHEZZA_MASSIMA;
@@ -42,6 +42,12 @@ function randomizza() {
 
 function riordina() {
 
+    let bottone = document.getElementById("riordina");
+
+    bottone.style.backgroundColor = getComputedStyle(document.documentElement).getPropertyValue('--color-ocean');
+    bottone.innerHTML = "---";
+    //bottone.onclick = console.log("aspetta che finisca!!");
+    
     switch (sort) {
 
         case 1:
@@ -470,16 +476,18 @@ async function shellSort() {
                 array[j] = array[j - gap];
                 document.getElementById(j).style.height = array[j - gap].toString() + "px";
 
-                document.getElementById(j).style.backgroundColor = "yellow";
+                document.getElementById(j).style.backgroundColor = "blue";
                 document.getElementById(i).style.backgroundColor = "red";
                 await sleep(velocita.value);
-                document.getElementById(j).style.backgroundColor = "";
-                document.getElementById(i).style.backgroundColor = "";
+                document.getElementById(j).style.backgroundColor = document.getElementById(i).style.backgroundColor = "";
 
             }
 
+            document.getElementById(j).style.backgroundColor = "yellow";
             array[j] = document.getElementById(j).style.height = tmp;
             document.getElementById(j).style.height = tmp.toString() + "px";
+            await sleep(velocita.value);
+            document.getElementById(j).style.backgroundColor = "";
 
         }
     }
@@ -580,6 +588,12 @@ function sleep(ms) {
 }
 
 async function finito() {
+
+    let bottone = document.getElementById("riordina");
+
+    bottone.style.backgroundColor = "";
+    bottone.innerHTML = "Riordina";
+    //bottone.onclick = riordina();
 
     let barre = document.getElementsByClassName("barra");
     let n, j;
