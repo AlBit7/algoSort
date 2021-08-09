@@ -32,58 +32,58 @@
 
             <div class="closebtn" onclick="closeNav()">×</div>
 
-            <div onclick="sort=1;scrittaTipoSort.innerHTML = 'bouble sort';" class="elemento" style="margin-top: 50px;">
+            <div onclick="closeNav();sort=1;scrittaTipoSort.innerHTML = 'bouble sort';" class="elemento" style="margin-top: 50px;">
                 <span>
                     bouble sort
                 </span>
             </div>
-            <div onclick="sort=2;scrittaTipoSort.innerHTML = 'selection sort';" class="elemento">
+            <div onclick="closeNav();sort=2;scrittaTipoSort.innerHTML = 'selection sort';" class="elemento">
                 <span>
                     selection sort
                 </span>
             </div>
-            <div onclick="sort=3;scrittaTipoSort.innerHTML = 'insertion sort';" class="elemento">
+            <div onclick="closeNav();sort=3;scrittaTipoSort.innerHTML = 'insertion sort';" class="elemento">
                 <span>
                     insertion sort
                 </span>
             </div>
-            <div onclick="sort=4;scrittaTipoSort.innerHTML = 'quick sort';" class="elemento">
+            <div onclick="closeNav();sort=4;scrittaTipoSort.innerHTML = 'quick sort';" class="elemento">
                 <span>
                     quick sort
                 </span>
             </div>
-            <div onclick="sort=5;scrittaTipoSort.innerHTML = 'merge sort';" class="elemento">
+            <div onclick="closeNav();sort=5;scrittaTipoSort.innerHTML = 'merge sort';" class="elemento">
                 <span>
                     merge sort
                 </span>
             </div>
-            <div onclick="sort=6;scrittaTipoSort.innerHTML = 'heap sort';" class="elemento">
+            <div onclick="closeNav();sort=6;scrittaTipoSort.innerHTML = 'heap sort';" class="elemento">
                 <span>
                     heap sort
                 </span>
             </div>
 
-            <div onclick="sort=7;scrittaTipoSort.innerHTML = 'cocktail sort';" class="elemento">
+            <div onclick="closeNav();sort=7;scrittaTipoSort.innerHTML = 'cocktail sort';" class="elemento">
                 <span>
                     cocktail sort
                 </span>
             </div>
-            <div onclick="sort=8;scrittaTipoSort.innerHTML = 'comb sort';" class="elemento">
+            <div onclick="closeNav();sort=8;scrittaTipoSort.innerHTML = 'comb sort';" class="elemento">
                 <span>
                     comb sort
                 </span>
             </div>
-            <div onclick="sort=9;scrittaTipoSort.innerHTML = 'shell sort';" class="elemento">
+            <div onclick="closeNav();sort=9;scrittaTipoSort.innerHTML = 'shell sort';" class="elemento">
                 <span>
                     shell sort
                 </span>
             </div>
-            <div onclick="sort=10;scrittaTipoSort.innerHTML = 'stooge sort';" class="elemento">
+            <div onclick="closeNav();sort=10;scrittaTipoSort.innerHTML = 'stooge sort';" class="elemento">
                 <span>
                     stooge sort
                 </span>
             </div>
-            <div onclick="sort=11;scrittaTipoSort.innerHTML = 'odd even sort';" onclick class="elemento">
+            <div onclick="closeNav();sort=11;scrittaTipoSort.innerHTML = 'odd even sort';" class="elemento">
                 <span>
                     odd even sort
                 </span>
@@ -91,13 +91,10 @@
 
         </div>
 
-        <div class="unificatore">
+        <div class="unificatore" style="margin-right: 15px;">
 
-            <div class="unificatore" style="margin-right: 15px;">
-                <div class='button -blue' onclick="randomizza();" style="padding-left: 20px;margin-right: 15px;">Randomizza</div>
-                <div class='button -blue' onclick="riordina();">Riordina</div>
-            </div>
-
+            <div class='button -blue' onclick="randomizza();" style="margin-right: 15px;">Randomizza</div>
+            <div class='button -blue' id="riordina" onclick="riordina();" style="margin-right: 15px;">Riordina</div>
             <input type="number" name="quantitaBarre" id="quantitaBarre" placeholder="elementi" value="100" style="margin-right: 15px;">
             <input type="range" min="0" max="500" value="250" class="slider" id="velocita">
 
