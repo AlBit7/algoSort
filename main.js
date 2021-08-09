@@ -89,7 +89,7 @@ function riordina() {
             break;
 
         default:
-            scrittaTipoSort.innerHTML = 'nessun sort';
+            scrittaTipoSort.innerHTML = 'selezionare sort';
             break;
     }
 
@@ -107,13 +107,13 @@ async function boubleSort() {
 
             document.getElementById(j).style.backgroundColor = "red";
 
-            await sleep(velocita.value);
-
-            if (array[j] > array[j + 1])
-
+            if (array[j] > array[j + 1]) {
+                document.getElementById(j + 1).style.backgroundColor = "blue";
                 swap(j, j + 1);
-
-            document.getElementById(j).style.backgroundColor = "";
+            }
+            
+            await sleep(velocita.value);
+            document.getElementById(j).style.backgroundColor = document.getElementById(j + 1).style.backgroundColor = "";
 
         }
 
@@ -470,9 +470,11 @@ async function shellSort() {
                 array[j] = array[j - gap];
                 document.getElementById(j).style.height = array[j - gap].toString() + "px";
 
-                document.getElementById(j).style.backgroundColor = "red";
+                document.getElementById(j).style.backgroundColor = "yellow";
+                document.getElementById(i).style.backgroundColor = "red";
                 await sleep(velocita.value);
                 document.getElementById(j).style.backgroundColor = "";
+                document.getElementById(i).style.backgroundColor = "";
 
             }
 
@@ -593,7 +595,7 @@ async function finito() {
         barre[i].style.backgroundColor = "red";
         barre[--j].style.backgroundColor = "red";
 
-        await sleep(10);
+        await sleep(5);
 
         barre[i].style.backgroundColor = "green";
         barre[j].style.backgroundColor = "green";
@@ -604,12 +606,12 @@ async function finito() {
 
 function openNav() {
     document.getElementById("mySidenav").style.width = "200px";
-    document.getElementById("main").style.marginLeft = "200px";
+    //document.getElementById("main").style.marginLeft = "200px";
     document.getElementById("menu").style = "visibility: hidden;";
 }
 
 function closeNav() {
     document.getElementById("mySidenav").style.width = "0";
-    document.getElementById("main").style.marginLeft = "0";
+    //document.getElementById("main").style.marginLeft = "0";
     document.getElementById("menu").style = "visibility: visible;";
 }
