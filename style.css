@@ -221,10 +221,10 @@ body {
 
   font-size: 13px;
     height: 25px;
-    width: 160px;
+    width: 100px;
 
   color: #fff;
-  border: 0 none;
+  background-color: none;
   border-radius: var(--borderRadius);
 
   -webkit-appearance: none;
@@ -233,13 +233,11 @@ body {
  
   justify-content: center;
   align-items: center;
-  flex: 0 0 160px;
+  flex: 0 0 100px;
 }
 
 .button:hover {
 transition: all 150ms linear;
-
-opacity: .85;
 }
 
 .button:active {
@@ -269,6 +267,7 @@ outline-offset: -4px;
 } */
 
 .button.-dark {
+    
   color: var(--color-snow);
   background: var(--color-dark);
 }
@@ -284,6 +283,11 @@ outline-offset: -4px;
 } */
 
 .button.-blue {
+    border: 2px solid var(--color-ocean);
+  color: var(--color-snow);
+}
+
+.button.-blue:hover {
   color: var(--color-snow);
   background: var(--color-ocean);
 }
@@ -311,18 +315,16 @@ outline-offset: -4px;
 
 
 
-
-
-
-
 input[type="number"] {
-    width: 7ch;
+    width: 8ch;
     text-align: center;
     border: 0;
-    height: 20px;
+    height: 25px;
     border-radius: var(--borderRadius);
     -moz-appearance: textfield;
-    
+    color: white;
+    background-color: var(--colore-principale);
+    border: 2px solid var(--color-ocean);
 }
 
 input[type="number"]::-webkit-inner-spin-button, input[type="number"]::-webkit-outer-spin-button {
