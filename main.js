@@ -141,14 +141,16 @@ async function selectionSort() {
 
         for (let j = i + 1; j < array.length; j++) {
 
-            document.getElementById(j).style.backgroundColor = "red";
+            let tmp = min
 
-            await sleep(velocita.value);
+            document.getElementById(j).style.backgroundColor = "red";
+            document.getElementById(tmp).style.backgroundColor = "blue";
 
             if (array[min] > array[j])
                 min = j; // updating the index of minimum element
 
-            document.getElementById(j).style.backgroundColor = "";
+            await sleep(velocita.value);
+            document.getElementById(j).style.backgroundColor = document.getElementById(tmp).style.backgroundColor = "";
 
         }
 
