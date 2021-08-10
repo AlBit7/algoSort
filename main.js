@@ -1,5 +1,6 @@
 const LARGHEZZA_MASSIMA = 15;
 const MAX = innerHeight - 100;
+const MIN = 1;
 
 const quantitaBarre = document.getElementById("quantitaBarre");
 const corpo = document.getElementById("corpo");
@@ -7,7 +8,8 @@ const velocita = document.getElementById("velocita");
 const scrittaTipoSort = document.getElementById("tipoSort");
 
 var array;
-var sort;
+var sort = 1;
+scrittaTipoSort.innerHTML = 'bouble sort';
 randomizza();
 
 function prendiLarghezzaBarre(numeroBarre) {
@@ -24,14 +26,14 @@ function prendiLarghezzaBarre(numeroBarre) {
 function randomizza() {
 
     corpo.innerHTML = "";
-    array = new Array(0);
+    array = [];
 
     let numeroDiBarre = parseInt(quantitaBarre.value);
     let larghezza = prendiLarghezzaBarre(numeroDiBarre);
 
     for (let i = 0; i < numeroDiBarre; ++i) {
 
-        let altezza = Math.floor(Math.random() * (MAX - 1) + 1);
+        let altezza = Math.floor(Math.random() * (MAX - MIN) + MIN);
 
         array.push(altezza);
         corpo.innerHTML += `<div id="${i}" class="barra" style="width: ${larghezza}px; height: ${altezza}px;"></div>`;
@@ -270,7 +272,7 @@ async function hoarePartition(l, r) {
 
             j--;
             if (j + 1 <= r)
-                document.getElementById(j + 1).style.backgroundColor = "orange";
+                document.getElementById(j + 1).style.backgroundColor = "blue"; // giallo blu è il colore dell'ellas!!
             document.getElementById(j).style.backgroundColor = "red";
 
             await sleep(velocita.value);
