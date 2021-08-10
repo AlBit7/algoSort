@@ -83,13 +83,6 @@ body {
     cursor: pointer;
 }
 
-
-
-
-
-
-
-
 /* ----- MENU ----- */
 
 .unificatore {
@@ -188,133 +181,69 @@ body {
 	transition: margin-left .5s;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 .button {
-  display: flex;
-  overflow: hidden;
+    display: flex;
+    overflow: hidden;
 
-  cursor: pointer;
-  user-select: none;
-  transition: all 150ms linear;
-  text-align: center;
-  white-space: nowrap;
-  text-decoration: none !important;
-  text-transform: none;
-  text-transform: capitalize;
+    cursor: pointer;
+    user-select: none;
+    transition: all 150ms linear;
+    text-align: center;
+    white-space: nowrap;
+    text-decoration: none !important;
+    text-transform: none;
+    text-transform: capitalize;
 
-  font-size: 13px;
+    font-size: 13px;
     height: 25px;
     width: 100px;
 
-  color: #fff;
-  background-color: none;
-  border-radius: var(--borderRadius);
+    color: #fff;
+    background-color: none;
+    border-radius: var(--borderRadius);
 
-  -webkit-appearance: none;
-  -moz-appearance:    none;
-  appearance:         none;
- 
-  justify-content: center;
-  align-items: center;
-  flex: 0 0 100px;
+    -webkit-appearance: none;
+    -moz-appearance:    none;
+    appearance:         none;
+
+    justify-content: center;
+    align-items: center;
+    flex: 0 0 100px;
 }
 
 .button:hover {
-transition: all 150ms linear;
+    transition: all 150ms linear;
 }
 
 .button:active {
-transition: all 150ms linear;
-opacity: .75;
+    transition: all 150ms linear;
+    opacity: .75;
 }
 
 .button:focus {
-outline: 1px dotted #959595;
-outline-offset: -4px;
+    outline: 1px dotted #959595;
+    outline-offset: -4px;
 }
 
-/* .button.-regular {
-  color: #202129;
-  background-color: #f2f2f2;
-  
-  &:hover {
-    color: #202129;
-    background-color: #e1e2e2;
-    opacity: 1;
-  }
-  
-  &:active {
-    background-color: #d5d6d6;
-    opacity: 1;
-  }
-} */
-
-.button.-dark {
-    
-  color: var(--color-snow);
-  background: var(--color-dark);
+.button.-dark {  
+    color: var(--color-snow);
+    background: var(--color-dark);
 }
 
 .button.-dark:focus {
     outline: 1px dotted white;
     outline-offset: -4px;
-  }
-  
-/* .button.-green {
-  color: var(--color-snow);
-  background: var(--color-grass);
-} */
+}
 
 .button.-blue {
     border: 2px solid var(--color-ocean);
-  color: var(--color-snow);
+    color: var(--color-snow);
 }
 
 .button.-blue:hover {
-  color: var(--color-snow);
-  background: var(--color-ocean);
+    color: var(--color-snow);
+    background: var(--color-ocean);
 }
-
-/* .button.-salmon {
-  color: var(--color-snow);
-  background: var(--color-salmon);
-}
-
-.button.-sun {
-  color: #f15c5c;
-  background: var(--color-sun);
-}
-
-.button.-alge {
-  color: #e7ff20;
-  background: var(--color-alge);
-}
-
-.button.-flower {
-  color: #FE8CDF;
-  background: var(--color-flower);
-} */
-
-
-
 
 input[type="number"] {
     width: 8ch;
@@ -337,19 +266,6 @@ input[type="number"]:focus {
     outline: 0;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 .loader {
 	display: block;
 	position: relative;
@@ -365,9 +281,6 @@ input[type="number"]:focus {
 	position: absolute;
 }
 
-/**
-	loader --7
-**/
 .loader.--7::before,
 .loader.--7::after {
 	width: var(--size-square);
